@@ -21,7 +21,7 @@ The [DXPopup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Popup.DXPopup) co
 
 <img src="./Images/popup-overview-1.png" alt="Popup" height="700"> <img src="./Images/popup-overview-2.png" alt="Popup" height="700">
 
-This repository contains an example that demonstrates how to get started with **DevExpress Popup for .NET MAUI**.
+This repository contains an example that demonstrates how to get started with the **DevExpress Popup for .NET MAUI**.
 
 ## Documentation
 
