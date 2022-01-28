@@ -17,11 +17,15 @@ Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuG
 
 ## What's in This Repository
 
+The [DXPopup](https://docs.devexpress.com/MAUI/DevExpress.Maui.Popup.DXPopup) control allows you to show a popup view that overlays the rest of the application content. You can attach it to any view on the screen or display as a separate dialog.
+
+<img src="./Images/popup-overview-1.png" alt="Popup" height="700"> <img src="./Images/popup-overview-2.png" alt="Popup" height="700">
+
 This repository contains an example that demonstrates how to get started with **DevExpress Popup for .NET MAUI**.
 
 ## Documentation
 
-- [Popup](http://docs.devexpress.devx/MAUI/403733/popup/index)
+- [Popup](http://docs.devexpress.com/MAUI/403733/popup/index)
 - [Data Grid](https://docs.devexpress.com/MAUI/403255/data-grid/data-grid)
 - [Charts](https://docs.devexpress.com/MAUI/403300/charts/charts)
 - [Data Form](https://docs.devexpress.com/MAUI/403640/data-form)
