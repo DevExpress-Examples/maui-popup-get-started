@@ -1,0 +1,121 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PopupExample.MainPage"
+             xmlns:local="clr-namespace:PopupExample"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dxp="clr-namespace:DevExpress.Maui.Popup;assembly=DevExpress.Maui.Editors"
+             BackgroundColor="#ffffff">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SeparatorStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#EBEBEB"/>
+                <Setter Property="HeightRequest" Value="1"/>
+            </Style>
+
+            <Style x:Key="DragDropTemplateStyle" TargetType="Label">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Padding">
+                    <x:OnIdiom Phone="0,0,0,0" Tablet="60,0,0,0"/>
+                </Setter>
+                <Setter Property="TextColor" Value="#56585c"/>
+            </Style>
+
+            <Style x:Key="ButtonStyle" TargetType="dxe:SimpleButton">
+                <Setter Property="IconColor" Value="#404144"/>
+                <Setter Property="TextColor" Value="#404144"/>
+                <Setter Property="Padding" Value="24,8"/>
+                <Setter Property="IconIndent" Value="16"/>
+                <Setter Property="HorizontalContentAlignment" Value="Start"/>
+                <Setter Property="PressedBackgroundColor" Value="#e8e8e8"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <DataTemplate x:Key="urgentItemTemplate">
+                <StackLayout Margin="0" Spacing="0" BackgroundColor="#ffedcc">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextColor="#e59601"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="itemTemplate">
+                <StackLayout Margin="0" Spacing="0" BackgroundColor="#ffffff">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="strikethroughItemTemplate">
+                <StackLayout Margin="0" Spacing="0">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextDecorations="Strikethrough"
+                           TextColor="#989898"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+            
+            <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"
+                                        UrgentDataTemplate="{StaticResource urgentItemTemplate}"
+                                        CompletedDataTemplate="{StaticResource strikethroughItemTemplate}"
+                                        UncompletedDataTemplate="{StaticResource itemTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+       <StackLayout>
+            <dxcv:DXCollectionView x:Name="collectionView"
+                                Tap="OnTap"
+                                ItemTemplate="{StaticResource itemDataTemplateSelector}"
+                                ItemsSource="{Binding ItemSource}">
+            </dxcv:DXCollectionView>
+
+            <dxp:DXPopup IsOpen="{Binding IsOpenPopup}"
+                         AllowScrim="True" 
+                         VerticalAlignment="Bottom"
+                         HorizontalAlignment="Stretch"
+                         Margin="16"
+                         CornerRadius="16">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding PopupTitle}"
+                           TextColor="#404144"
+                           Margin="24,16,24,14"
+                           HorizontalTextAlignment="Center"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+                    <dxe:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="Pin"
+                                      Icon="pintotop"
+                                      IsVisible="{Binding ButtonPinVisible}"
+                                      Clicked="PinClick"/>
+
+                    <dxe:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="Done"
+                                      Icon="completetask"
+                                      IsVisible="{Binding ButtonDoneVisible}"
+                                      Clicked="DoneClick"/>
+
+                    <dxe:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="To Do"
+                                      Icon="uncompletetask"
+                                      IsVisible="{Binding ButtonToDoVisible}"
+                                      Clicked="ToDoClick"/>
+
+                    <dxe:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="Delete"
+                                      Icon="deletetask"
+                                      IconColor="#ff5e61"
+                                      TextColor="#ff5e61"
+                                      Clicked="DeleteClick"/>
+
+                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+                    <dxe:SimpleButton Text="Cancel"
+                                      TextColor="#2088ff"
+                                      PressedBackgroundColor="#e8e8e8"
+                                      BackgroundColor="Transparent"
+                                      Clicked="DismissPopup"
+                                      Margin="0,0,0,6"/>
+                </StackLayout>
+            </dxp:DXPopup>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
