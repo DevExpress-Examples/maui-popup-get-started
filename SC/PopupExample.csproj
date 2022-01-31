@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>PopupExample</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -22,10 +21,7 @@
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">False</UseInterpreter>
 
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -42,67 +38,18 @@
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-preview3" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.29-preview3" />
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Maui.Editors" Version="22.1.1-pre-*" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
-
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	</PropertyGroup>
 	
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.5.10">
-		</PackageReference>
-		<Reference Include="DevExpress.Maui.DataGrid">
-			<HintPath>..\..\..\xamarin\Binaries\Android\DevExpress.Maui.DataGrid.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.Editors">
-			<HintPath>..\..\..\xamarin\Binaries\Android\DevExpress.Maui.Editors.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.Core">
-			<HintPath>..\..\..\xamarin\Binaries\Android\DevExpress.Maui.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.CollectionView">
-			<HintPath>..\..\..\xamarin\Binaries\Android\DevExpress.Maui.CollectionView.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Xamarin.Android.Grid">
-			<HintPath>..\..\..\xamarin\Binaries\DevExpress.Xamarin.Android.Grid.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Xamarin.Android.Editors">
-			<HintPath>..\..\..\xamarin\Binaries\DevExpress.Xamarin.Android.Editors.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Xamarin.Android.CollectionView">
-			<HintPath>..\..\..\xamarin\Binaries\DevExpress.Xamarin.Android.CollectionView.dll</HintPath>
-		</Reference>
+	  <PackageReference Include="Xamarin.Kotlin.StdLib">
+	    <Version>1.5.31.2</Version>
+	  </PackageReference>
 	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-ios'">
-		<Reference Include="DevExpress.Maui.Editors">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.Editors.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.DataGrid">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.DataGrid.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.Core">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.CollectionView">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.CollectionView.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.iOS.Grid">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.iOS.Grid.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.iOS.Editors">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.iOS.Editors.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Maui.iOS.CollectionView">
-			<HintPath>..\..\..\xamarin\Binaries\iOS\iossimulator-x64\DevExpress.Maui.iOS.CollectionView.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+
 	<ItemGroup>
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Data\" />
