@@ -43,12 +43,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 	
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-	  <PackageReference Include="Xamarin.Kotlin.StdLib">
-	    <Version>1.5.31.2</Version>
-	  </PackageReference>
-	</ItemGroup>
-
 	<ItemGroup>
 	</ItemGroup>
 	<ItemGroup>
