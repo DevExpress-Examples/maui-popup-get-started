@@ -6,7 +6,6 @@ using DevExpress.Maui.CollectionView;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Essentials;
 
 namespace PopupExample {
     public partial class MainPage : ContentPage {
