@@ -5,6 +5,7 @@
              xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              BackgroundColor="#ffffff">
 
     <ContentPage.Resources>
@@ -23,7 +24,7 @@
                 <Setter Property="TextColor" Value="#56585c"/>
             </Style>
 
-            <Style x:Key="ButtonStyle" TargetType="dxc:SimpleButton">
+            <Style x:Key="ButtonStyle" TargetType="dx:DXButton">
                 <Setter Property="IconColor" Value="#404144"/>
                 <Setter Property="TextColor" Value="#404144"/>
                 <Setter Property="Padding" Value="24,8"/>
@@ -82,33 +83,33 @@
                            Margin="24,16,24,14"
                            HorizontalTextAlignment="Center"/>
                     <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
-                    <dxc:SimpleButton Style="{StaticResource ButtonStyle}"
-                                      Text="Pin"
+                    <dx:DXButton Style="{StaticResource ButtonStyle}"
+                                      Content="Pin"
                                       Icon="pintotop"
                                       IsVisible="{Binding ButtonPinVisible}"
                                       Clicked="PinClick"/>
 
-                    <dxc:SimpleButton Style="{StaticResource ButtonStyle}"
-                                      Text="Done"
+                    <dx:DXButton Style="{StaticResource ButtonStyle}"
+                                      Content="Done"
                                       Icon="completetask"
                                       IsVisible="{Binding ButtonDoneVisible}"
                                       Clicked="DoneClick"/>
 
-                    <dxc:SimpleButton Style="{StaticResource ButtonStyle}"
-                                      Text="To Do"
+                    <dx:DXButton Style="{StaticResource ButtonStyle}"
+                                      Content="To Do"
                                       Icon="uncompletetask"
                                       IsVisible="{Binding ButtonToDoVisible}"
                                       Clicked="ToDoClick"/>
 
-                    <dxc:SimpleButton Style="{StaticResource ButtonStyle}"
-                                      Text="Delete"
+                    <dx:DXButton Style="{StaticResource ButtonStyle}"
+                                      Content="Delete"
                                       Icon="deletetask"
                                       IconColor="#ff5e61"
                                       TextColor="#ff5e61"
                                       Clicked="DeleteClick"/>
 
                     <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
-                    <dxc:SimpleButton Text="Cancel"
+                    <dx:DXButton Content="Cancel"
                                       TextColor="#2088ff"
                                       PressedBackgroundColor="#e8e8e8"
                                       BackgroundColor="Transparent"
