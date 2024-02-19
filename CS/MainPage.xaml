@@ -10,7 +10,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="SeparatorStyle" TargetType="BoxView">
+            <Style x:Key="SeparatorStyle" TargetType="dx:DXSeparator">
                 <Setter Property="BackgroundColor" Value="#EBEBEB"/>
                 <Setter Property="HeightRequest" Value="1"/>
             </Style>
@@ -36,25 +36,25 @@
             </Style>
 
             <DataTemplate x:Key="urgentItemTemplate">
-                <StackLayout Margin="0" Spacing="0" BackgroundColor="#ffedcc">
+                <dx:DXStackLayout Margin="0" ItemSpacing="0" BackgroundColor="#ffedcc">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextColor="#e59601"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
-                </StackLayout>
+                    <dx:DXSeparator Style="{StaticResource SeparatorStyle}"/>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="itemTemplate">
-                <StackLayout Margin="0" Spacing="0" BackgroundColor="#ffffff">
+                <dx:DXStackLayout Margin="0" ItemSpacing="0" BackgroundColor="#ffffff">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
-                </StackLayout>
+                    <dx:DXSeparator Style="{StaticResource SeparatorStyle}"/>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="strikethroughItemTemplate">
-                <StackLayout Margin="0" Spacing="0">
+                <dx:DXStackLayout Margin="0" ItemSpacing="0">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextDecorations="Strikethrough"
                            TextColor="#989898"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
-                </StackLayout>
+                    <dx:DXSeparator Style="{StaticResource SeparatorStyle}"/>
+                </dx:DXStackLayout>
             </DataTemplate>
             
             <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"
@@ -64,7 +64,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-       <StackLayout>
+       <dx:DXStackLayout>
             <dxcv:DXCollectionView x:Name="collectionView"
                                 Tap="OnTap"
                                 ItemTemplate="{StaticResource itemDataTemplateSelector}"
@@ -77,12 +77,14 @@
                          HorizontalAlignment="Stretch"
                          Margin="16"
                          CornerRadius="16">
-                <StackLayout Orientation="Vertical">
+                <dx:DXStackLayout Orientation="Vertical">
                     <Label Text="{Binding PopupTitle}"
                            TextColor="#404144"
                            Margin="24,16,24,14"
                            HorizontalTextAlignment="Center"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+
+                    <dx:DXSeparator Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+
                     <dx:DXButton Style="{StaticResource ButtonStyle}"
                                       Content="Pin"
                                       Icon="pintotop"
@@ -108,15 +110,16 @@
                                       TextColor="#ff5e61"
                                       Clicked="DeleteClick"/>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+                    <dx:DXSeparator Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+
                     <dx:DXButton Content="Cancel"
                                       TextColor="#2088ff"
                                       PressedBackgroundColor="#e8e8e8"
                                       BackgroundColor="Transparent"
                                       Clicked="DismissPopup"
                                       Margin="0,0,0,6"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </dxc:DXPopup>
-        </StackLayout>
+        </dx:DXStackLayout>
     </ContentPage.Content>
 </ContentPage>
