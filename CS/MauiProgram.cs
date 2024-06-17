@@ -13,6 +13,9 @@ namespace PopupExample
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.UseDevExpressCollectionView()
+				.UseDevExpressControls()
+				.UseDevExpressEditors()
 				.UseDevExpress()
 
 				.ConfigureFonts(fonts =>
